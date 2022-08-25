@@ -425,7 +425,7 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800"> @yield('page_name') </h1>
+                    @yield('page_heading')
                     @yield('main_content') 
 
                 </div>

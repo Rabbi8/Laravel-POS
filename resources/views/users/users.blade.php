@@ -1,8 +1,12 @@
 @extends('layout.main')
 
-@section('page_name')
+@section('page_heading')
 
-Users
+<div class="row d-flex justify-content-between my-5">
+    <h1 class="h3 text-gray-800"> Users </h1>
+   <a class="bg-success pt-2 px-4 rounded text-decoration-none text-white font-weight-bold " href="{{ route('users.create') }}" > Add user </a>
+
+</div>
 
 @stop
 
@@ -27,6 +31,8 @@ Users
             </div>
             <div class="card-body">
                 <div class="table-responsive">
+
+                    
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                           {{--  <tr>
@@ -82,9 +88,13 @@ Users
                                 <td>{{ $value->created_at }}</td>
                                 <td>
                                     
-                                    <a class="btn btn-success" href="{{ url('users/details/'.$value->id ) }}"> details</a> &nbsp; &nbsp;
-                                    <a class="btn btn-primary" href=""> edit</a> &nbsp; &nbsp;
-                                    <a class="btn btn-danger" href="{{ url('users/delete/'.$value->id ) }}"> delete</a> &nbsp; &nbsp;
+                                    <a class="btn btn-success" href="{{ route('users.show', ['user'=> $value->id ] ) }}"> details</a> &nbsp; &nbsp;
+                                    <a class="btn btn-primary" href="{{ route('users.edit', ['user' => $value->id]) }}"> edit </a> &nbsp; &nbsp;
+                                    <form class="d-inline-block" action="{{ route('users.destroy', ['user'=> $value->id ]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger"  onclick="return confirm('are you sure?')" type="submit">Delete</button>
+                                    </form>
                                 </td>
 
                             </tr>
