@@ -1,10 +1,11 @@
+
 @extends('layout.main')
 
 @section('page_heading')
 
-<div class="row d-flex justify-content-between my-5">
+<div class="row d-flex justify-content-between my-2">
     <h1 class="h3 text-gray-800"> Users </h1>
-   <a class="bg-success pt-2 px-4 rounded text-decoration-none text-white font-weight-bold " href="{{ route('users.create') }}" > Add user </a>
+   <a class="bg-success pt-2 px-4 rounded text-decoration-none text-white font-weight-bold " href="{{ route('users.create') }}" ><i class="fa-solid fa-plus"></i> Add user </a>
 
 </div>
 
@@ -18,12 +19,6 @@
  {{--  <!-- Begin Page Content --> --}}
  <div class="container-fluid">
 
- {{--  <!-- Page Heading --> --}}
-<h1 class="h3 mb-2 text-gray-800">Tables</h1>
-<p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-    For more information about DataTables, please visit the <a target="_blank"
-        href="https://datatables.net">official DataTables documentation</a>.</p>
-
         {{-- <!-- DataTales Example --> --}}
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -35,40 +30,21 @@
                     
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
-                          {{--  <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>  --}}
-
                             <tr>
                                 <th>ID</th>
+                                <th>Group</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Address</th>
                                 <th>Created_at</th>
-                                <th>Action</th>
+                                <th style="width:350px">Action</th>
                             </tr>
                         </thead>
                         <tfoot>
-
-                         {{--   <tr>
-                                    
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
-                                </tr>
-                        --}}
-
-                             <tr>
+                            <tr>
                                 <th>ID</th>
+                                <th>Group</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
@@ -81,19 +57,26 @@
                             @foreach($users as $key => $value)
                             <tr>
                                 <td>{{ $value->id }}</td>
+
+                                @if( empty($value->group->title))
+                                <td>{{ 'Out of Group' }}</td> 
+                                @else
+                                <td>{{ $value->group->title }}</td> 
+                                @endif
+
                                 <td>{{ $value->name }}</td>
                                 <td>{{ $value->email }}</td>
                                 <td>{{ $value->phone }}</td>
                                 <td>{{ $value->address }}</td>
                                 <td>{{ $value->created_at }}</td>
                                 <td>
-                                    
-                                    <a class="btn btn-success" href="{{ route('users.show', ['user'=> $value->id ] ) }}"> details</a> &nbsp; &nbsp;
-                                    <a class="btn btn-primary" href="{{ route('users.edit', ['user' => $value->id]) }}"> edit </a> &nbsp; &nbsp;
+                                    <a class="btn btn-info" href="{{ route('users.edit', ['user' => $value->id]) }}"> <i class="fa-regular fa-file-pdf"></i> </a> &nbsp;
+                                    <a class="btn btn-success" href="{{ route('users.show', ['user'=> $value->id ] ) }}"><i class="fa-sharp fa-solid fa-eye"></i> details</a> &nbsp;
+                                    <a class="btn btn-primary" href="{{ route('users.edit', ['user' => $value->id]) }}"><i class="fa-sharp fa-solid fa-edit"></i> edit </a> &nbsp;
                                     <form class="d-inline-block" action="{{ route('users.destroy', ['user'=> $value->id ]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button class="btn btn-danger"  onclick="return confirm('are you sure?')" type="submit">Delete</button>
+                                        <button class="btn btn-danger"  onclick="return confirm('are you sure?')" type="submit"><i class="fa-sharp fa-solid fa-trash"></i> Delete</button>
                                     </form>
                                 </td>
 

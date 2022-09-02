@@ -7,19 +7,12 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\Collection;
 use App\Models\User;
+use Illuminate\Support\Carbon;
 
-Route::get('/users', [UsersController::class, 'index']);
+Route::get('/dashboard', [UsersController::class, 'index']);
 Route::get('/groups', [UserGroupsController::class, 'test']);
 
 Route::resource('users', UsersController::class)->where(['user'=> '[0-9]+',]);
-
-
-// Route::get('users/details/{id}', [UsersController::class, 'userDetails'])->where('id', '[0-9]+');
-// Route::get('users/delete/{id}', [UsersController::class, 'userDelete'])->where('id', '[0-9]+');
-
-// Route::get('/', function(){
-//     return view('welcome');
-// });
 
 
 
