@@ -9,8 +9,8 @@ use App\Http\Controllers\Collection;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 
+Route::get('/', [UsersController::class, 'index']);
 Route::get('/dashboard', [UsersController::class, 'index']);
-Route::get('/groups', [UserGroupsController::class, 'test']);
 
 Route::resource('users', UsersController::class)->where(['user'=> '[0-9]+',]);
 

@@ -63,8 +63,8 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $this->data['users'] = User::findOrFail($id);
-        $this->data['mode'] = 'Information';
+        $this->data['users']         = User::findOrFail($id);
+        $this->data['mode']          = 'Information';
         return view('users.show', $this->data );
     }
 
@@ -76,8 +76,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $this->data['user']= User::find($id);
-        $this->data['mode']= 'Edit user';
+        $this->data['user']         = User::find($id);
+        $this->data['mode']         = 'Edit user';
         $groups= Group::all();
         foreach($groups as $group){
            $this->data['user_group'][$group->id]= $group->title;
