@@ -11,11 +11,7 @@ use Illuminate\Support\Facades\Password;
 
 class UsersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
        $this->data['users']= User::all();
@@ -23,15 +19,10 @@ class UsersController extends Controller
     }
 
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function  create()
     {
         
-         $groups= Group::all();
+         $groups = Group::all();
          foreach($groups as $group){
            $this->data['user_group'][$group->id]= $group->title;
          }
@@ -40,12 +31,6 @@ class UsersController extends Controller
         return view('users.create_edit', $this->data);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(UserCreateRequest $request)
     {
         $stored_data = $request->all();
@@ -55,12 +40,7 @@ class UsersController extends Controller
         return view('users.users', $this->data );
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function show($id)
     {
         $this->data['users']         = User::findOrFail($id);
@@ -68,12 +48,6 @@ class UsersController extends Controller
         return view('users.show', $this->data );
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $this->data['user']         = User::find($id);
@@ -85,13 +59,6 @@ class UsersController extends Controller
         return view('users.create_edit', $this->data );
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(UserUpdateRequest $request, $id)
     {
         $data = $request->all();
@@ -106,12 +73,6 @@ class UsersController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $user= User::find($id);

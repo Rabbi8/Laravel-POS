@@ -38,7 +38,7 @@
                                 <th>Phone</th>
                                 <th>Address</th>
                                 <th>Created_at</th>
-                                <th style="width:350px">Action</th>
+                                <th style="width:300px">Action</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -70,7 +70,6 @@
                                 <td>{{ $value->address }}</td>
                                 <td>{{ $value->created_at }}</td>
                                 <td>
-                                    <a class="btn btn-info" href="{{ route('users.edit', ['user' => $value->id]) }}"> <i class="fa-regular fa-file-pdf"></i> </a> &nbsp;
                                     <a class="btn btn-success" href="{{ route('users.show', ['user'=> $value->id ] ) }}"><i class="fa-sharp fa-solid fa-eye"></i> details</a> &nbsp;
                                     <a class="btn btn-primary" href="{{ route('users.edit', ['user' => $value->id]) }}"><i class="fa-sharp fa-solid fa-edit"></i> edit </a> &nbsp;
                                     <form class="d-inline-block" action="{{ route('users.destroy', ['user'=> $value->id ]) }}" method="POST">
