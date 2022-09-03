@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
+use Illuminate\Support\Carbon;
 
 class Group extends Model
 {
@@ -12,7 +12,10 @@ class Group extends Model
 
     protected $fillable = ['title'];
 
-    public function users(){
-        return $this->hasOne(User::class, 'group_id', 'id');
+    public function getCreatedAtAttribute($value){
+        return Carbon::parse($value)->format('d-M-Y h:i:s A');
+    }
+    public function getUpdatedAtAttribute($value){
+        return Carbon::parse($value)->format('d-M-Y h:i:s A');
     }
 }

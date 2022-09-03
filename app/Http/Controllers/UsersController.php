@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Group;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\UserCreateRequest;
-use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Support\Facades\Password;
 
 class UsersController extends Controller
@@ -31,7 +31,7 @@ class UsersController extends Controller
         return view('users.create_edit', $this->data);
     }
 
-    public function store(UserCreateRequest $request)
+    public function store(StoreUserRequest $request)
     {
         $stored_data = $request->all();
         $stored_data['password'] = password_hash($request->password, PASSWORD_BCRYPT);
@@ -59,7 +59,7 @@ class UsersController extends Controller
         return view('users.create_edit', $this->data );
     }
 
-    public function update(UserUpdateRequest $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
         $data = $request->all();
         $user= User::findOrFail($id);

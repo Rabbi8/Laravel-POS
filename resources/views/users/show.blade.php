@@ -3,10 +3,16 @@
 @section('page_heading')
 
 <div class="row d-flex justify-content-between my-5">
-    <h1 class="text-success h4 text-gray-800 col-md-4"> <span class="btn btn-success">  {{ $users->name. ' '.$mode }}  </span>   </h1>
-    <div class="col-md-8 text-right">
-        <a class="btn btn-primary" href=""> <i class="fa-solid fa-plus"></i> New sale</a>
-        <a class="btn btn-primary" href=""> <i class="fa-solid fa-plus"></i> New purchase</a>
+    <div class= "col-md-5 d-flex">
+      <a  href="{{ url('/dashboard') }}"><span class="btn btn-success mr-1"> Back</span> </a>
+      <h1 class="text-success h4 text-gray-800"> <span class="btn btn-success">  {{ $users->name. ' '.$mode }}  </span>   </h1>
+    </div>
+  
+    <div class="col-md-7 text-right">
+        <a class="btn btn-primary" href=""> <i class="fa-solid fa-plus"></i> New Sale</a>
+        <a class="btn btn-primary" href=""> <i class="fa-solid fa-plus"></i> New Purchase</a>
+        <a class="btn btn-primary" href=""> <i class="fa-solid fa-plus"></i> New Payment</a>
+        <a class="btn btn-primary" href=""> <i class="fa-solid fa-plus"></i> New Receipt</a>
     </div>
 </div>
 
