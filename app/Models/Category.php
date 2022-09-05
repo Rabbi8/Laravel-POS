@@ -11,6 +11,15 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = ['title',];
+
+    public static function arrayForSelect(){
+        $categories = Category::all();
+        $arr = [];
+        foreach($categories as $Category){
+            $arr[$Category->id] = $Category->title;
+        }
+        return $arr;
+    }
     
     public function getCreatedAtAttribute($value)
     {

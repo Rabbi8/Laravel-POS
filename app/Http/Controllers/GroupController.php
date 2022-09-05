@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Group;
 use App\Http\Requests\StoreGroupRequest;
 use App\Http\Requests\UpdateGroupRequest;
+use Illuminate\Support\Facades\Session;
 
 class GroupController extends Controller
 {
@@ -79,7 +80,9 @@ class GroupController extends Controller
     {
         $data = Group::findOrFail($group->id);
         $data->title = $request->title;
-        $data->save();
+        if($data->save()){
+            Session::flash('message', 'Group Updated');
+        }
         return redirect()->route('groups.index');
     }
 

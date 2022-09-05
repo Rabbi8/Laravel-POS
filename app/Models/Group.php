@@ -18,4 +18,12 @@ class Group extends Model
     public function getUpdatedAtAttribute($value){
         return Carbon::parse($value)->format('d-M-Y h:i:s A');
     }
+    public static function arrayForSelect(){
+        $arr = [];
+        $groups = Group::all();
+        foreach($groups as $group){
+            $arr[$group->id] = $group->title; 
+        }
+        return $arr; 
+    }
 }

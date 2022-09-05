@@ -52,10 +52,7 @@ class UsersController extends Controller
     {
         $this->data['user']         = User::find($id);
         $this->data['mode']         = 'Edit user';
-        $groups= Group::all();
-        foreach($groups as $group){
-           $this->data['user_group'][$group->id]= $group->title;
-         }
+        $this->data['user_group']   = Group::arrayForSelect();
         return view('users.create_edit', $this->data );
     }
 

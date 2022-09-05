@@ -88,8 +88,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="{{ url('/categories') }}">Categories</a>
-                        <a class="collapse-item" href="{{ url('/products') }}">Products</a>
+                        <a class="collapse-item" href="{{ route('categories.index') }}">Categories</a>
+                        <a class="collapse-item" href="{{ route('products.index') }}">Products</a>
                     </div>
                 </div>
             </li>
@@ -428,6 +428,9 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
+                    @if(Session::has('message'))
+                    <div class="p-3 bg-info bg-opacity-10 border border-info  rounded text-light"> {{ Session::get('message') }} </div>
+                    @endif
                     @yield('page_heading')
                     @yield('main_content') 
 
