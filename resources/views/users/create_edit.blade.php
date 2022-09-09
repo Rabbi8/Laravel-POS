@@ -15,7 +15,7 @@
    
 
     @if($mode == 'Create user')
-    {!! Form::open([ 'route' => ['users.store'],'method' => 'post', 'class' => ['border border-secondary rounded p-5']]) !!}
+    {!! Form::open([ 'route' => ['users.store'], 'method' => 'post', 'class' => ['border border-secondary rounded p-5']]) !!}
     @php
      $button = 'Created';
     @endphp

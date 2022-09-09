@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3309
--- Generation Time: Sep 03, 2022 at 05:18 AM
+-- Generation Time: Sep 09, 2022 at 06:57 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -36,6 +36,14 @@ CREATE TABLE `admins` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`id`, `name`, `email`, `password`, `created_at`, `updated_at`) VALUES
+(1, 'Rabbi Hossain', 'rabbi@gmail.com', '$2y$10$ONTBDmaxrG4sP53t1duu4uDVAUF6cUhbnfFaK0pq/KU3quWhg3gzm', NULL, NULL),
+(3, 'Ab de villiers', 'abde@gmail.com', '$2y$10$ONTBDmaxrG4sP53t1duu4uDVAUF6cUhbnfFaK0pq/KU3quWhg3gzm', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -57,7 +65,8 @@ INSERT INTO `categories` (`id`, `title`, `created_at`, `updated_at`) VALUES
 (1, 'Fish', '2022-09-02 19:09:51', '2022-09-02 19:45:03'),
 (2, 'Cow', '2022-09-02 19:11:14', '2022-09-02 19:11:14'),
 (3, 'Rabbit', '2022-09-02 19:16:13', '2022-09-02 19:49:54'),
-(9, 'Tiger', '2022-09-02 19:50:37', '2022-09-02 19:50:37');
+(9, 'Tiger', '2022-09-02 19:50:37', '2022-09-02 19:50:37'),
+(13, 'Horse', '2022-09-05 07:49:16', '2022-09-05 07:49:16');
 
 -- --------------------------------------------------------
 
@@ -93,10 +102,8 @@ CREATE TABLE `groups` (
 --
 
 INSERT INTO `groups` (`id`, `title`, `created_at`, `updated_at`) VALUES
-(1, 'customers', NULL, NULL),
-(2, 'Employee', NULL, NULL),
-(3, 'Investor', NULL, NULL),
-(4, 'Manager', NULL, NULL);
+(1, 'Investor', '2022-09-03 04:40:57', '2022-09-03 06:09:59'),
+(2, 'Customer', '2022-09-03 04:41:23', '2022-09-03 04:41:23');
 
 -- --------------------------------------------------------
 
@@ -186,7 +193,7 @@ CREATE TABLE `personal_access_tokens` (
 CREATE TABLE `products` (
   `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cost_price` double NOT NULL,
   `price` double NOT NULL,
   `category_id` int(11) NOT NULL,
@@ -194,6 +201,14 @@ CREATE TABLE `products` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `title`, `description`, `cost_price`, `price`, `category_id`, `unit`, `created_at`, `updated_at`) VALUES
+(2, 'Ginipig', NULL, 50, 30, 3, '65', '2022-09-05 07:37:51', '2022-09-05 07:37:51'),
+(3, 'Enim aut eos debitis', 'Dolore anim animi q', 558, 161, 3, '2', '2022-09-05 07:44:05', '2022-09-05 07:44:05');
 
 -- --------------------------------------------------------
 
@@ -302,19 +317,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `phone`, `address`, `group_id`, `admin_id`, `created_at`, `updated_at`) VALUES
-(8, 'Delphine', 'de86e@gmail.com', NULL, '836-763-4400', 'Bangladesh.', 3, 73984, '2022-07-28 03:57:10', '2022-09-02 18:07:07'),
-(9, 'Thalia', 'Darian55@hotmail.com', NULL, '304-708-7167 x663', '47608 Bauch Stravenue', 3, 73489, '2022-07-27 15:10:21', '2022-09-02 05:57:46'),
-(10, 'Beulah', 'Diana_Miller@hotmail.com', NULL, '1-303-684-6397', '141 Leannon Port', 3, 58199, '2022-07-27 23:00:44', '2022-07-28 10:16:59'),
-(11, 'Bernice', 'Jadyn_Harber@yahoo.com', NULL, '267-516-0445 x789', '634 Lillie Land', 3, 49212, '2022-07-28 02:14:37', '2022-07-27 14:20:34'),
-(12, 'Madaline', 'Eldridge70@hotmail.com', NULL, '487.475.3194', '06384 Kuhn Inlet', 3, 59902, '2022-07-27 21:46:48', '2022-07-28 12:21:34'),
-(13, 'Nyah', 'Hunter_Bergnaum@gmail.com', NULL, '(934) 199-4054 x80918', '638 Fadel Fork', 5, 89487, '2022-07-27 20:10:58', '2022-07-27 19:28:37'),
-(14, 'Marisol', 'Kaycee3@hotmail.com', NULL, '214-201-7762 x25972', '5138 Hilario Forges', 3, 51000, '2022-07-27 23:43:48', '2022-07-28 00:02:26'),
-(526, 'RABBI HOSSAIN', 'r293455mohammadrabbihossain@gmail.com', NULL, '01785707825', 'Flat:3rd floor(4-tola, samner site), House:19, Road:19, Block:C, Mirpur:12', 2, 1, '2022-09-02 16:22:55', '2022-09-02 16:22:55'),
-(534, 'John Mayer', 'nofes@mailinator.com', NULL, '+1 (427) 147-9456', 'Dolorem lorem quidem', 2, 1, '2022-09-02 17:31:29', '2022-09-02 17:31:29'),
-(535, 'Phoebe Hutchinson', 'rodyhuneju@mailinator.com', NULL, '+1 (859) 611-2646', 'Sunt quis sint magn', 3, 1, '2022-09-02 17:32:53', '2022-09-02 17:32:53'),
-(536, 'Zoe Wiley', 'soxur@mailinator.com', 'Pa$$w0rd!', '+1 (194) 929-1717', 'Consequatur non veni', 3, 1, '2022-09-02 17:34:34', '2022-09-02 17:34:34'),
-(537, 'Xanthus Patton', 'bicipedit@mailinator.com', '$2y$10$oZLHcSNfMpv0Om2S4vjwvOlkLOq4xKqnHRqe4Z6WbrpzvqkAQr6pe', '+1 (344) 199-6947', 'Eligendi animi quis', 3, 1, '2022-09-02 17:49:44', '2022-09-02 17:49:44'),
-(538, 'Suki Holland', 'teteniqoky@mailinator.com', '$2y$10$GXyEjU2FFxAlvcGuC7HvhOYecFC6GG19Mt1OS8fdLrC9FonM7j6p.', '+1 (901) 567-4136', 'Voluptatem itaque ea', 1, 1, '2022-09-02 18:11:02', '2022-09-02 18:11:02');
+(1, 'Berk Mckay', 'tokex@mailinator.com', '$2y$10$ONTBDmaxrG4sP53t1duu4uDVAUF6cUhbnfFaK0pq/KU3quWhg3gzm', '+1 (647) 499-3787', 'Nesciunt itaque rat', 1, 1, '2022-09-03 04:41:09', '2022-09-03 04:41:09'),
+(2, 'Sopoline Calhoun', 'gejunivy@mailinator.com', '$2y$10$ONTBDmaxrG4sP53t1duu4uDVAUF6cUhbnfFaK0pq/KU3quWhg3gzm', '+1 (396) 881-5866', 'Quasi facere a error', 2, 1, '2022-09-03 04:41:32', '2022-09-03 04:41:32'),
+(3, 'Hayes Warner', 'nilewysat@mailinator.com', '$2y$10$cFkyWnykEOu4/z.m0PS6deBuh.gOo/7J0avGGToIAjCyNNoWpyne2', '+1 (589) 332-4447', 'Est voluptatem nost', 3, 1, '2022-09-03 04:41:52', '2022-09-03 04:41:52'),
+(4, 'Sonya Meadows', 'vebojyky@mailinator.com', '$2y$10$ZM2j5FODph2bIzrizGoyL.X.B5MCZfyfl5ySDnxD6cKjXMWEzM1t2', '+1 (217) 627-4188', 'Esse irure magna mod', 1, 1, '2022-09-03 06:43:42', '2022-09-03 06:43:42'),
+(5, 'Belle Camacho', 'wyfehunefu@mailinator.com', '$2y$10$A4tu5ppdipCXKeKvbfdI0.JnONGZmORJMB1gnxjs3rt8D7WtyZPp.', '+1 (724) 791-8004', 'Reprehenderit alias', 1, 1, '2022-09-05 06:36:52', '2022-09-05 06:36:52');
 
 --
 -- Indexes for dumped tables
@@ -421,13 +428,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -439,7 +446,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `groups`
 --
 ALTER TABLE `groups`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -463,7 +470,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `purchase_invoices`
@@ -499,7 +506,7 @@ ALTER TABLE `sale_invoices`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=539;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
