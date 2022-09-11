@@ -51,6 +51,7 @@ class User extends Authenticatable
         return $this->belongsTo(Group::class, 'group_id', 'id');
     }
 
+
     public function getCreatedAtAttribute($value){
         return Carbon::parse($value)->format('d/M/Y h:i:s A');
     }
@@ -58,4 +59,6 @@ class User extends Authenticatable
     public function getUpdatedAtAttribute($value){
         return Carbon::parse($value)->format('d/M/Y h:i:s A');
     }
+
+    
 }

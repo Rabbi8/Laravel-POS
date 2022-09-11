@@ -13,4 +13,9 @@ class Controller extends BaseController
 
     // This is a Custom array and I created it. It has been created for passing data to view file. 
     public array $data;
+    public function __construct()
+    {
+        return $this->data['tabs']= '';
+    }
+ 
 }

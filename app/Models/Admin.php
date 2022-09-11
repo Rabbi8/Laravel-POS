@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 class Admin extends Authenticatable
 {
     use HasFactory;
+
 }
 
 

@@ -3,9 +3,9 @@
 
 @section('page_heading')
 
-<div class="row d-flex justify-content-between my-2">
+<div class="row d-flex justify-content-end my-2">
     <h1 class="h3 text-gray-800"> Users </h1>
-   <a class="bg-success pt-2 px-4 rounded text-decoration-none text-white font-weight-bold " href="{{ route('users.create') }}" ><i class="fa-solid fa-plus"></i> Add user </a>
+   <a class="bg-success py-3 px-4 rounded text-decoration-none text-white font-weight-bold col-md-1" href="{{ route('users.create') }}" ><i class="fa-solid fa-plus"></i> Add user </a>
 
 </div>
 

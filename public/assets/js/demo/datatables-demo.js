@@ -11,6 +11,10 @@ $(document).ready(function() {
 
   });
 
+  $('#userSaleDataTable').DataTable({
+    'pageLength': 5,
+  });
+
  
 });
 
