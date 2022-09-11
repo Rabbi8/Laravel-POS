@@ -58,8 +58,6 @@ Route::get('users/{user}/receipt_edit/{receipt}', [UserReceiptController::class,
 Route::delete('users/{receipt}/receipt_destroy/{user}', [UserReceiptController::class, 'destroy'])->name('user.receipts.destroy')->where(['user'=>'[0-9]+',]);
 
 
-
-
 Route::resource('categories', CategoryController::class)->where(['category' => '[0-9]+']);
 Route::resource('groups', GroupController::class)->where(['group' => '[0-9]+']);
 Route::resource('products', ProductController::class)->where(['group' => '[0-9]+']);
